@@ -12,4 +12,7 @@
     <artifactId>hui-springcloud-account-service</artifactId>
 
 
+    <dependencies>
+
+    </dependencies>
 </project>

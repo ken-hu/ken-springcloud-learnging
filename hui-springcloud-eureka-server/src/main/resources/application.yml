@@ -1,8 +1,14 @@
 server:
-  port: 8761
+  port: 1001
 
 spring:
   profiles:
     active: dev
   application:
-    name: @pom.artifactId@
+    name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false

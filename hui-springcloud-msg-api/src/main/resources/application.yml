@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: eureka-client-msg
+server:
+  port: 2002
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+      register-with-eureka: false
+      fetch-registry: false
+  instance:
+    hostname: localhost

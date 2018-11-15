@@ -39,17 +39,4 @@ target
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-hui-springcloud-account-api/src/test/
-hui-springcloud-account-service/src/main/resources/
-hui-springcloud-account-service/src/test/
-hui-springcloud-conf-server/src/test/
-hui-springcloud-eureka-client/src/
-hui-springcloud-eureka-server/src/test/
-hui-springcloud-hystrix-dashboard/src/test/
-hui-springcloud-model/src/
-hui-springcloud-msg-api/src/test/
-hui-springcloud-msg-service/src/main/resources/
-hui-springcloud-msg-service/src/test/
-hui-springcloud-zuul-server/src/main/resources/
-hui-springcloud-zuul-server/src/test/
-src/
+

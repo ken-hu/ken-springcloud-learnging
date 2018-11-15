@@ -41,6 +41,7 @@
         <module>hui-springcloud-account-api</module>
         <module>hui-springcloud-eureka-client</module>
         <module>hui-springcloud-msg-api</module>
+        <module>hui-springcloud-hystrix-dashboard</module>
     </modules>
 
 

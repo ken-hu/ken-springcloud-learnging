@@ -21,7 +21,8 @@ public class AccountController {
     private DiscoveryClient discoveryClient;
 
     @GetMapping("/account")
-    public String account() {
+    public String account() throws InterruptedException {
+        Thread.sleep(5000L);
         String services = "Services Account run : " + discoveryClient.getServices();
         System.out.println(services);
         return services;

@@ -1,5 +1,6 @@
 package com.hui.springcloud.msg.api;
 
+import com.hui.springcloud.msg.service.MsgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -22,10 +23,11 @@ public class MsgController {
     LoadBalancerClient loadBalancerClient;
     @Autowired
     RestTemplate restTemplate;
-
+    @Autowired
+    private MsgService msgService;
 
     @Autowired
-    AccountFeginClient accountFeginClient;
+    private AccountFeginClient accountFeginClient;
 
 
     @GetMapping("/msg")
@@ -46,5 +48,11 @@ public class MsgController {
     @GetMapping("/msg3")
     public String msg3(){
         return accountFeginClient.accountFeign();
+    }
+
+
+    @GetMapping("/msg4")
+    public String msg4(){
+        return msgService.testService();
     }
 }

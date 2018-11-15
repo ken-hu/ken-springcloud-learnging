@@ -3,6 +3,8 @@ package com.hui.springcloud.msg.api;
 import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.annotation.Resource;
+
 /**
  * <b><code>MsgFeginController</code></b>
  * <p/>
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  *
  * @author Hu Weihui
  */
+@Resource
 @FeignClient("eureka-client-account")
 public interface AccountFeginClient {
 

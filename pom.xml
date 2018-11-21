@@ -32,16 +32,17 @@
     </properties>
 
     <modules>
+        <module>hui-springcloud-base</module>
         <module>hui-springcloud-eureka-server</module>
-        <module>hui-springcloud-model</module>
-        <module>hui-springcloud-conf-server</module>
-        <module>hui-springcloud-zuul-server</module>
-        <module>hui-springcloud-msg-service</module>
-        <module>hui-springcloud-account-service</module>
         <module>hui-springcloud-account-api</module>
-        <module>hui-springcloud-eureka-client</module>
-        <module>hui-springcloud-msg-api</module>
         <module>hui-springcloud-hystrix-dashboard</module>
+        <module>hui-springcloud-config</module>
+        <module>hui-springcloud-account</module>
+        <module>hui-springcloud-account-api</module>
+        <module>hui-springcloud-account-api</module>
+        <module>hui-springcloud-api-gateway</module>
+        <module>hui-springcloud-order</module>
+        <module>hui-springcloud-order-api</module>
     </modules>
 
 

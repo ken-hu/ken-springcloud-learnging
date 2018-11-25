@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hui-springcloud-order</artifactId>
+    <artifactId>hui-springcloud-product-api</artifactId>
 
 
 </project>

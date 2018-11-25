@@ -32,28 +32,28 @@
     </properties>
 
     <modules>
-        <module>hui-springcloud-base</module>
         <module>hui-springcloud-eureka-server</module>
-        <module>hui-springcloud-account-api</module>
         <module>hui-springcloud-hystrix-dashboard</module>
-        <module>hui-springcloud-config</module>
-        <module>hui-springcloud-account</module>
-        <module>hui-springcloud-account-api</module>
-        <module>hui-springcloud-account-api</module>
         <module>hui-springcloud-api-gateway</module>
-        <module>hui-springcloud-order</module>
         <module>hui-springcloud-order-api</module>
+        <module>hui-springcloud-order-server</module>
+        <module>hui-springcloud-order-api</module>
+        <module>hui-springcloud-product-api</module>
+        <module>hui-springcloud-product-server</module>
+        <module>hui-springcloud-config-server</module>
+        <module>hui-springcloud-api-gateway</module>
+        <module>hui-springcloud-common</module>
     </modules>
 
 
     <dependencyManagement>
         <dependencies>
             <!--logback -->
-            <dependency>
+            <!--<dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
                 <version>${logback.version}</version>
-            </dependency>
+            </dependency>-->
 
             <!--Spring Cloud dependencies-->
             <dependency>
@@ -88,13 +88,6 @@
                 <version>${mysql.version}</version>
             </dependency>
 
-            <!--H2-->
-            <dependency>
-                <groupId>com.h2database</groupId>
-                <artifactId>h2</artifactId>
-                <version>${h2.version}</version>
-                <scope>test</scope>
-            </dependency>
             <!-- fast json -->
             <dependency>
                 <groupId>com.alibaba</groupId>

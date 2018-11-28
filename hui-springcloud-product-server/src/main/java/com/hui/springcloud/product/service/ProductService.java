@@ -1,5 +1,10 @@
 package com.hui.springcloud.product.service;
 
+import com.hui.springcloud.common.entity.product.Product;
+
+import javax.annotation.Resource;
+import java.util.List;
+
 /**
  * <b><code>ProductService</code></b>
  * <p/>
@@ -9,5 +14,10 @@ package com.hui.springcloud.product.service;
  *
  * @author Hu Weihui
  */
-public class ProductService {
+@Resource
+public interface ProductService {
+
+    Product get(String id);
+
+    List<Product> list();
 }

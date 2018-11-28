@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: order-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1/springcloud_test?characterEncoding=utf-8&useSSL=false
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8081
+PRODUCT-SERVER:
+  ribbon:
+#   NFLoadBalancerRuleClassName: 配置负载均衡（全类名）

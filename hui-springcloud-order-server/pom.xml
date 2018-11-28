@@ -12,4 +12,17 @@
     <artifactId>hui-springcloud-order-server</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.hui.base.springcloud</groupId>
+            <artifactId>hui-springcloud-order-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hui.base.springcloud</groupId>
+            <artifactId>hui-springcloud-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

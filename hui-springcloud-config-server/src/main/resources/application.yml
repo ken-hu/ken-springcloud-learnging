@@ -7,7 +7,7 @@ spring:
         git:
           uri: https://github.com/ithuhui/hui-base-springcloud-config-repo
           username: ithuhui
-          password:
+          password: M3b27*Z&H3ek
 eureka:
   client:
     service-url:

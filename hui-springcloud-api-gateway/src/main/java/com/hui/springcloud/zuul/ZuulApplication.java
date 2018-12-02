@@ -17,4 +17,5 @@ import org.springframework.cloud.netflix.zuul.EnableZuulServer;
 @EnableEurekaClient
 @EnableZuulServer
 public class ZuulApplication {
+
 }

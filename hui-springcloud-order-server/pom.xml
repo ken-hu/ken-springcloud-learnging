@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.hui.base.springcloud</groupId>
-            <artifactId>hui-springcloud-order-server</artifactId>
+            <artifactId>hui-springcloud-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 

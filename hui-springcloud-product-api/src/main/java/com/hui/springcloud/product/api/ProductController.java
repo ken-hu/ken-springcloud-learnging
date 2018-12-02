@@ -5,10 +5,7 @@ import com.hui.springcloud.product.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,14 +23,14 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-    @PostMapping("/product")
-    public ResponseEntity get(@RequestBody String id){
+    @GetMapping("/product/{id}")
+    public ResponseEntity get(@PathVariable String id){
         Product product = productService.get(id);
         return new ResponseEntity(product,HttpStatus.OK);
     }
 
 
-    @PostMapping("/products")
+    @GetMapping("/products")
     public ResponseEntity listAll(){
         List<Product> list = productService.list();
         return new ResponseEntity(list, HttpStatus.OK);

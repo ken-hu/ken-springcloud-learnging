@@ -1,21 +1,20 @@
-package com.hui.springcloud.order.client;
+package com.hui.springcloud.order.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.hui.springcloud.common.entity.product.Product;
+import com.hui.springcloud.order.client.ProductClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
 import javax.xml.ws.Response;
+import java.util.HashMap;
 
 /**
  * <b><code>ClientController</code></b>
@@ -34,7 +33,7 @@ public class ClientController {
      *
      * @since hui_project 1.0.0
      */
-    @Resource
+    @Autowired
     private ProductClient productClient;
 
     /**
@@ -52,12 +51,12 @@ public class ClientController {
      * @author Hu weihui
      * @since hui_project 1.0.0
      */
-    @PostMapping("/order/product")
-    public ResponseEntity getProduct(Integer id){
+    @GetMapping("/order/product/{id}")
+    public ResponseEntity getProduct(@PathVariable("id") String id){
         RestTemplate restTemplate = new RestTemplate();
-        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
-        paramMap.add("data",JSONObject.toJSONString(id));
-        Product product = restTemplate.postForObject("http://localhost:8080/product",paramMap, Product.class);
+        HashMap<String, String> paramMap = new HashMap<>();
+        paramMap.put("id",id);
+        Product product = restTemplate.getForObject("http://localhost:8080/product/{id}", Product.class ,paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -69,14 +68,15 @@ public class ClientController {
      * @author Hu weihui
      * @since hui_project 1.0.0
      */
-    @PostMapping("/order/product2")
-    public ResponseEntity getProduct2(Integer id){
+    @GetMapping("/order/product2/{id}")
+    public ResponseEntity getProduct2(@PathVariable("id") String id){
         RestTemplate restTemplate = new RestTemplate();
         ServiceInstance instance = loadBalancerClient.choose("product-server");
-        String url = String.format("http://$s:$s", instance.getHost(), instance.getPort());
-        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
-        paramMap.add("data",JSONObject.toJSONString(id));
-        Product product = restTemplate.postForObject(url, paramMap,Product.class);
+        String url = String.format("http://%s:%s/product/{id}", instance.getHost(), instance.getPort());
+//        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
+        HashMap<String, String> paramMap = new HashMap<>();
+        paramMap.put("id",id);
+        Product product = restTemplate.getForObject(url,Product.class,paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -95,11 +95,13 @@ public class ClientController {
      * @author Hu weihui
      * @since hui_project 1.0.0
      */
-    @PostMapping("/order/product3")
-    public ResponseEntity getProduct3(Integer id){
-        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
-        paramMap.add("data",JSONObject.toJSONString(id));
-        Product product = restTemplate.postForObject("http://product-server/product",paramMap, Product.class);
+    @GetMapping("/order/product3/{id}")
+    public ResponseEntity getProduct3(@PathVariable("id") String id){
+//        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
+//        id = JSONObject.toJSONString(id);
+        HashMap<String, String> paramMap = new HashMap<>();
+        paramMap.put("id",id);
+        Product product = restTemplate.getForObject("http://product-server/product/{id}", Product.class,paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -111,8 +113,8 @@ public class ClientController {
      * @author Hu weihui
      * @since hui_project 1.0.0
      */
-    @GetMapping("/order/product4")
-    public ResponseEntity getProduct4(Integer id){
+    @GetMapping("/order/product4/{id}")
+    public ResponseEntity getProduct4(@PathVariable("id") String id){
         Product product = productClient.getProduct(id);
         return ResponseEntity.ok(product);
     }

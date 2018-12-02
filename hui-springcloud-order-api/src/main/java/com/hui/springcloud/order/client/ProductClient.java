@@ -1,9 +1,9 @@
 package com.hui.springcloud.order.client;
 
 import com.hui.springcloud.common.entity.product.Product;
-import org.springframework.cloud.netflix.feign.FeignClient;
+import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,6 +19,6 @@ import javax.annotation.Resource;
 @FeignClient(name = "product-server")
 public interface ProductClient {
 
-    @PostMapping("/product")
-    Product getProduct(Integer id);
+    @GetMapping(value = "/product/{id}")
+    Product getProduct(@PathVariable("id") String id);
 }

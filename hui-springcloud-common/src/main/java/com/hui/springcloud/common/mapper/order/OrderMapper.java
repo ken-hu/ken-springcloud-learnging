@@ -1,7 +1,9 @@
 package com.hui.springcloud.common.mapper.order;
 
 import com.hui.springcloud.common.entity.order.Order;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     int deleteByPrimaryKey(String orderId);
 

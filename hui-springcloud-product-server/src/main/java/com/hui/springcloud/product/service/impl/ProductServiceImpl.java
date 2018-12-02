@@ -24,8 +24,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product get(String id) {
-        productMapper.selectByPrimaryKey("p-1");
-        return null;
+        Product product = productMapper.selectByPrimaryKey(id);
+        return product;
     }
 
     @Override

@@ -6,6 +6,12 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1/springcloud_test?characterEncoding=utf-8&useSSL=false
+  cloud:
+    stream:
+      bindings:
+        huiStream:
+          group: hui
+          content-type: application/json
 eureka:
   client:
     service-url:
@@ -15,3 +21,8 @@ server:
 logging:
     level:
       com.hui.springcloud.common.mapper: DEBUG
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml
+#PRODUCT-SERVER:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: 配置负载均衡（全类名）

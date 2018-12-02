@@ -15,8 +15,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @author Hu Weihui
  */
 @EnableEurekaClient
-@SpringBootApplication
-@MapperScan("com.hui.springcloud")
+@MapperScan("com.hui.springcloud.common.mapper")
+@SpringBootApplication(scanBasePackages = "com.hui.springcloud")
 public class ProductApplication {
     public static void main(String[] args) {
         SpringApplication.run(ProductApplication.class, args);

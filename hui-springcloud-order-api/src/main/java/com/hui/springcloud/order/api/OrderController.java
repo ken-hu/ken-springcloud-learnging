@@ -1,13 +1,11 @@
 package com.hui.springcloud.order.api;
 
 import com.hui.springcloud.common.entity.order.Order;
+import com.hui.springcloud.common.entity.product.Product;
 import com.hui.springcloud.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,16 +23,18 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/order")
-    public ResponseEntity get(@PathVariable String id){
+
+    @GetMapping("/order/{id}")
+    public ResponseEntity get(@PathVariable("id") String id){
         Order order = orderService.get(id);
         return ResponseEntity.ok(order);
     }
 
-    @PostMapping("/orders")
+    @GetMapping("/orders")
     public ResponseEntity listAll(){
         List<Order> list = orderService.list();
         return ResponseEntity.ok(list);
     }
+
 
 }

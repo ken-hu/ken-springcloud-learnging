@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * <b><code>RestTemplateConfig</code></b>
  * <p/>
- * Description:
+ * Description: 注册restTemplate
  * <p/>
  * <b>Creation Time:</b> 2018/11/28 23:38.
  *

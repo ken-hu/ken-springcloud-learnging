@@ -19,6 +19,14 @@ import javax.annotation.Resource;
 @FeignClient(name = "product-server")
 public interface ProductClient {
 
+    /**
+     * fegin获取商品信息.
+     *
+     * @param id the id
+     * @return the product
+     * @author HuWeihui
+     * @since hui_project v1
+     */
     @GetMapping(value = "/product/{id}")
     Product getProduct(@PathVariable("id") String id);
 }

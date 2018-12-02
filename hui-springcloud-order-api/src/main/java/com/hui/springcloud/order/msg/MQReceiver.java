@@ -20,11 +20,17 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class MQReceiver {
 
-    //1.先创建消息队列，直接监听
-    //@RabbitListener(queues = "huiQueue")
-    //2.自动声明队列(2.0以上)
-    //@RabbitListener(queuesToDeclare = @Queue("huiQueue"))
-    //3.自动声明队列和exchange并自动关联（Exchange:服务根据消息分组进行转发）
+    /**
+     * Receiver.
+     * 1.先创建消息队列，直接监听
+     * @RabbitListener(queues = "huiQueue")
+     * 2.自动声明队列(2.0以上)
+     * @RabbitListener(queuesToDeclare = @Queue("huiQueue"))
+     * 3.自动声明队列和exchange并自动关联（Exchange:服务根据消息分组进行转发）
+     * @param msg the msg
+     * @author HuWeihui
+     * @since hui_project v1
+     */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "huiQueue"),
             exchange = @Exchange(value = "huiExchange")
@@ -34,8 +40,13 @@ public class MQReceiver {
     }
 
 
-
-
+    /**
+     * 接受ServiceA消息.
+     *
+     * @param msg the msg
+     * @author HuWeihui
+     * @since hui_project v1
+     */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "huiQueue"),
             key = "serviceA",
@@ -45,6 +56,13 @@ public class MQReceiver {
         log.info("[MQReceiver] receiver: serviceA getMsg ::: {}", msg);
     }
 
+    /**
+     * 接受ServiceB消息.
+     *
+     * @param msg the msg
+     * @author HuWeihui
+     * @since hui_project v1
+     */
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "huiQueue"),
             key = "serviceB",

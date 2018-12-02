@@ -24,12 +24,23 @@ public class OrderController {
     private OrderService orderService;
 
 
+    /**
+     * 通过id查询订单.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @GetMapping("/order/{id}")
     public ResponseEntity get(@PathVariable("id") String id){
         Order order = orderService.get(id);
         return ResponseEntity.ok(order);
     }
 
+    /**
+     * 查询所有订单
+     *
+     * @return the response entity
+     */
     @GetMapping("/orders")
     public ResponseEntity listAll(){
         List<Order> list = orderService.list();

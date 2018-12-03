@@ -1,8 +1,9 @@
 package com.hui.springcloud.zuul;
 
-import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.zuul.EnableZuulServer;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 /**
  * <b><code>ZuulApplication</code></b>
@@ -13,9 +14,11 @@ import org.springframework.cloud.netflix.zuul.EnableZuulServer;
  *
  * @author Hu Weihui
  */
-@SpringCloudApplication
+@SpringBootApplication
 @EnableEurekaClient
-@EnableZuulServer
+@EnableZuulProxy
 public class ZuulApplication {
-
+    public static void main(String[] args) {
+        SpringApplication.run(ZuulApplication.class, args);
+    }
 }

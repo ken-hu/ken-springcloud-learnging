@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      enabled: true
+      discovery:
+        service-id: CONFIG-SERVER
+      profile: dev
+      label: master
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+server:
+  port: 9000
+zuul:
+  routes:
+    hui-config:
+      path: /hui-config/**
+      serviceId: config-server
+# 忽略的路由
+  ignored-patterns:
+    - /product-server/products
+#设置为空 则不拦截cookie authorization setcookie
+  sensitive-headers:
+#      config-server: /hui-config/**
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000

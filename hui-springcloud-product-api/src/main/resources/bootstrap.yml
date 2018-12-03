@@ -1,13 +1,16 @@
 spring:
+  application:
+    name: product-server
   cloud:
     config:
-      profile: dev
       discovery:
-        enabled: true
         service-id: CONFIG-SERVER
+        enabled: true
       label: master
-  application:
-    name: order-server
+      profile: dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
 eureka:
   client:
     service-url:

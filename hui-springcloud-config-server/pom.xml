@@ -44,7 +44,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.hui.base.springcloud.EurekaApplication</mainClass>
+                    <mainClass>com.hui.base.springcloud.config.ConfigApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

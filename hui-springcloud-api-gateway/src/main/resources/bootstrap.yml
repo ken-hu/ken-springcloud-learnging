@@ -22,7 +22,7 @@ zuul:
 # 忽略的路由
   ignored-patterns:
     - /product-server/products
-#设置为空 则不拦截cookie authorization setcookie
+#敏感头 设置为空 则不拦截cookie authorization setcookie
   sensitive-headers:
 #      config-server: /hui-config/**
 

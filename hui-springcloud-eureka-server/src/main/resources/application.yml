@@ -1,14 +1,17 @@
 server:
-  port: 1001
-
-spring:
-  profiles:
-    active: dev
-  application:
-    name: eureka-server
+  port: 8761
 eureka:
   instance:
+    prefer-ip-address: true
     hostname: localhost
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
   client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
     register-with-eureka: false
-    fetch-registry: false
+#    开发的时候关闭自我保护提醒
+  server:
+    enable-self-preservation: false
+spring:
+  application:
+    name: eureka-server

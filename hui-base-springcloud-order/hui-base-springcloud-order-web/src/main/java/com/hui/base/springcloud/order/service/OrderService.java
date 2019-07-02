@@ -22,4 +22,8 @@ public interface OrderService {
     List<Order> list();
 
     Order add(Order order);
+
+    void testTCC(Order order, String exFlag);
+
+    void testTXC(Order order, String exFlag);
 }

@@ -102,7 +102,7 @@ public class TestController {
     }
 
     /**
-     * 通过CloudStream发送对象JSON（项目实施）.
+     * 通过CloudStream发送对象JSON（项目推荐实施）.
      *
      * @author HuWeihui
      * @since hui_project v1

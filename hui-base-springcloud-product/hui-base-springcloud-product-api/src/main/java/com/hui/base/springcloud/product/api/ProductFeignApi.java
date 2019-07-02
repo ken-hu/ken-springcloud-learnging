@@ -35,6 +35,12 @@ public interface ProductFeignApi {
     @PutMapping("/products")
     ResultVO add(@RequestBody ProductDTO productDTO);
 
+    @PutMapping("/lcn/tcc/products")
+    ResultVO tccAdd(@RequestBody ProductDTO productDTO);
+
+    @PutMapping("/lcn/txc/products")
+    ResultVO txcAdd(@RequestBody ProductDTO productDTO);
+
     @Component
     static class ProductFeignApiFallback implements ProductFeignApi{
         /**
@@ -52,6 +58,16 @@ public interface ProductFeignApi {
 
         @Override
         public ResultVO add(ProductDTO productDTO) {
+            return null;
+        }
+
+        @Override
+        public ResultVO tccAdd(ProductDTO productDTO) {
+            return null;
+        }
+
+        @Override
+        public ResultVO txcAdd(ProductDTO productDTO) {
             return null;
         }
     }

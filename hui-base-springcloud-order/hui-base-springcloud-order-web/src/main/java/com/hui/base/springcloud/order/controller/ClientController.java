@@ -1,4 +1,4 @@
-package com.hui.base.springcloud.order.client;
+package com.hui.base.springcloud.order.controller;
 
 import com.hui.base.springcloud.common.response.ResultMapper;
 import com.hui.base.springcloud.common.response.ResultVO;
@@ -58,11 +58,11 @@ public class ClientController {
      * @since hui_project 1.0.0
      */
     @GetMapping("/order/product/{id}")
-    public ResponseEntity getProduct(@PathVariable("id") String id){
+    public ResponseEntity getProduct(@PathVariable("id") String id) {
         RestTemplate restTemplate = new RestTemplate();
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("id",id);
-        ProductDTO product = restTemplate.getForObject("http://localhost:8080/mapper/{id}", ProductDTO.class ,paramMap);
+        paramMap.put("id", id);
+        ProductDTO product = restTemplate.getForObject("http://localhost:8080/mapper/{id}", ProductDTO.class, paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -75,14 +75,14 @@ public class ClientController {
      * @since hui_project 1.0.0
      */
     @GetMapping("/order/product2/{id}")
-    public ResponseEntity getProduct2(@PathVariable("id") String id){
+    public ResponseEntity getProduct2(@PathVariable("id") String id) {
         RestTemplate restTemplate = new RestTemplate();
         ServiceInstance instance = loadBalancerClient.choose("mapper-server");
         String url = String.format("http://%s:%s/mapper/{id}", instance.getHost(), instance.getPort());
 //        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("id",id);
-        ProductDTO product = restTemplate.getForObject(url,ProductDTO.class,paramMap);
+        paramMap.put("id", id);
+        ProductDTO product = restTemplate.getForObject(url, ProductDTO.class, paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -94,12 +94,12 @@ public class ClientController {
      * @since hui_project 1.0.0
      */
     @GetMapping("/order/product3/{id}")
-    public ResponseEntity getProduct3(@PathVariable("id") String id){
+    public ResponseEntity getProduct3(@PathVariable("id") String id) {
 //        MultiValueMap<String, String> paramMap = new LinkedMultiValueMap<>();
 //        id = JSONObject.toJSONString(id);
         HashMap<String, String> paramMap = new HashMap<>();
-        paramMap.put("id",id);
-        ProductDTO product = restTemplate.getForObject("http://mapper-server/mapper/{id}", ProductDTO.class,paramMap);
+        paramMap.put("id", id);
+        ProductDTO product = restTemplate.getForObject("http://mapper-server/mapper/{id}", ProductDTO.class, paramMap);
         return ResponseEntity.ok(product);
     }
 
@@ -112,7 +112,7 @@ public class ClientController {
      * @since hui_project 1.0.0
      */
     @GetMapping("/order/product4/{id}")
-    public ResultVO<ProductDTO> getProduct4(@PathVariable("id") String id){
+    public ResultVO<ProductDTO> getProduct4(@PathVariable("id") String id) {
         ProductDTO data = productFeignApi.get(id).getData();
         log.info(data.toString());
         return ResultMapper.ok(data);
@@ -120,11 +120,24 @@ public class ClientController {
 
 
     @PutMapping("/orders/addProduct")
-    public ResultVO addProduct(@RequestBody Order order){
+    public ResultVO addProduct(@RequestBody Order order) {
         orderService.add(order);
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductName("test");
         productFeignApi.add(productDTO);
+        return ResultMapper.ok();
+    }
+
+
+    @PutMapping("/orders/addProduct/tcc")
+    public ResultVO addProductByTcc(@RequestBody Order order, String exFlag) {
+        orderService.testTCC(order, exFlag);
+        return ResultMapper.ok();
+    }
+
+    @PutMapping("/orders/addProduct/txc")
+    public ResultVO addProductByTxc(@RequestBody Order order, String exFlag) {
+        orderService.testTXC(order, exFlag);
         return ResultMapper.ok();
     }
 

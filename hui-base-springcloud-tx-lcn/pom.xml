@@ -11,10 +11,6 @@
 
     <artifactId>hui-base-springcloud-tx-lcn</artifactId>
 
-    <properties>
-        <lcn.version>5.0.2.RELEASE</lcn.version>
-    </properties>
-
     <dependencyManagement>
         <dependencies>
             <!--Spring Cloud dependencies-->
@@ -33,7 +29,7 @@
         <dependency>
             <groupId>com.codingapi.txlcn</groupId>
             <artifactId>txlcn-tm</artifactId>
-            <version>${lcn.version}</version>
+            <version>${txlcn.version}</version>
         </dependency>
 
         <dependency>

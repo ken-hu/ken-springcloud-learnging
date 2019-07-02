@@ -1,5 +1,7 @@
 package com.hui.base.springcloud.order.controller;
 
+import com.hui.base.springcloud.common.response.ResultMapper;
+import com.hui.base.springcloud.common.response.ResultVO;
 import com.hui.base.springcloud.order.model.Order;
 import com.hui.base.springcloud.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +34,9 @@ public class OrderController {
      * @return the response entity
      */
     @GetMapping("/order/{id}")
-    public ResponseEntity get(@PathVariable("id") String id){
+    public ResultVO<Order> get(@PathVariable("id") String id){
         Order order = orderService.get(id);
-        return ResponseEntity.ok(order);
+        return ResultMapper.ok(order);
     }
 
     /**
@@ -43,10 +45,9 @@ public class OrderController {
      * @return the response entity
      */
     @GetMapping("/orders")
-    public ResponseEntity listAll(){
+    public ResultVO<List<Order>> listAll(){
         List<Order> list = orderService.list();
-        return ResponseEntity.ok(list);
+        return ResultMapper.ok(list);
     }
-
 
 }

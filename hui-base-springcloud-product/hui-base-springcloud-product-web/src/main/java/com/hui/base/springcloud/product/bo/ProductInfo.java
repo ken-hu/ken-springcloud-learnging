@@ -1,4 +1,4 @@
-package com.hui.base.springcloud.product.dto;
+package com.hui.base.springcloud.product.bo;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

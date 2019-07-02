@@ -22,7 +22,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableEurekaClient
 @EnableCircuitBreaker
 @MapperScan("com.hui.base.springcloud.*.mapper")
-@EnableFeignClients(basePackages = "com.hui.base.springcloud")
 @EnableHystrixDashboard
 public class OrderApplication {
     public static void main(String[] args) {

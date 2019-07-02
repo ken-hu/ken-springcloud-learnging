@@ -3,10 +3,14 @@ package com.hui.base.springcloud.order.service.impl;
 import com.hui.base.springcloud.order.mapper.OrderMapper;
 import com.hui.base.springcloud.order.model.Order;
 import com.hui.base.springcloud.order.service.OrderService;
+import com.hui.base.springcloud.product.api.ProductFeignApi;
+import dto.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * <b><code>OrderServiceImpl</code></b>
@@ -21,6 +25,9 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
+
+    @Autowired
+    private ProductFeignApi productFeignApi;
 
     @Override
     public Order get(String id) {
@@ -37,5 +44,31 @@ public class OrderServiceImpl implements OrderService {
     public Order add(Order order) {
         orderMapper.insertSelective(order);
         return order;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void testTCC(Order order, String exFlag) {
+        // use the tcc mode to start remote transaction
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("tccTest");
+        productDTO.setProductId(UUID.randomUUID().toString());
+        productFeignApi.tccAdd(productDTO);
+
+        // use the local transaction
+        orderMapper.insertSelective(order);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void testTXC(Order order, String exFlag) {
+        // use the txc mode to start remote transaction
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("txcTest");
+        productDTO.setProductId(UUID.randomUUID().toString());
+        productFeignApi.txcAdd(productDTO);
+
+        // use the local transaction
+        orderMapper.insertSelective(order);
     }
 }

@@ -40,9 +40,9 @@ public class ProductController {
 
 
     @GetMapping("/products")
-    public ResponseEntity listAll(){
+    public ResultVO listAll(){
         List<Product> list = productService.list();
-        return new ResponseEntity(list, HttpStatus.OK);
+        return ResultMapper.ok(list);
     }
 
 
@@ -52,5 +52,22 @@ public class ProductController {
         BeanUtils.copyProperties(productDTO, product);
         productService.add(product);
         return ResultMapper.ok(product);
+    }
+
+
+    @PutMapping("/lcn/tcc/products")
+    public ResultVO tccAdd(@RequestBody ProductDTO productDTO){
+        Product product = new Product();
+        BeanUtils.copyProperties(productDTO, product);
+        productService.tccAdd(product);
+        return ResultMapper.ok();
+    }
+
+    @PutMapping("/lcn/txc/products")
+    public ResultVO txcAdd(@RequestBody ProductDTO productDTO){
+        Product product = new Product();
+        BeanUtils.copyProperties(productDTO, product);
+        productService.txcAdd(product);
+        return ResultMapper.ok();
     }
 }

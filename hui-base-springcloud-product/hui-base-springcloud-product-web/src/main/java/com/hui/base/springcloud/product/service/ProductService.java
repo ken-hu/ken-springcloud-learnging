@@ -1,7 +1,6 @@
 package com.hui.base.springcloud.product.service;
 
 
-import com.hui.base.springcloud.product.dto.ProductInfo;
 import com.hui.base.springcloud.product.model.Product;
 
 import javax.annotation.Resource;
@@ -25,4 +24,7 @@ public interface ProductService {
 
     Product add(Product product);
 
+    void tccAdd(Product product);
+
+    void txcAdd(Product product);
 }

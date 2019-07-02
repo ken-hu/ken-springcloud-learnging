@@ -42,6 +42,8 @@
         <swagger2.version>2.9.2</swagger2.version>
         <mysql.version>5.1.44</mysql.version>
         <logback.version>1.1.11</logback.version>
+
+        <txlcn.version>5.0.2.RELEASE</txlcn.version>
     </properties>
 
     <dependencyManagement>

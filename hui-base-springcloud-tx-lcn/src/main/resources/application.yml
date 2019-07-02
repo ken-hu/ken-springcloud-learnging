@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tx-lcn-server
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+server:
+  port: 28771
+eureka:
+  instance:
+    hostname: tx-lcn-server
+  client:
+    service-url:
+      defaultZone: http://localhost:28761/discovery

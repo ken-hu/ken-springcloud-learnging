@@ -40,6 +40,6 @@ target
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
-/hui-springcloud-config-server/src/main/resources/application.yml
 /out/**
 /out/
+/hui-base-springcloud-config/src/main/resources/application.yml

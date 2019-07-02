@@ -1,0 +1,70 @@
+# 使用CONFIG-SERVER 版本
+#server:
+#  port: 8081
+#spring:
+#  cloud:
+#    config:
+#      profile: dev
+#      discovery:
+#        enabled: true
+#        service-id: CONFIG-SERVER
+#      label: master
+#  application:
+#    name: product-server
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:28761/eureka
+
+
+# ------
+#不使用CONFIG-SERVER 版本
+server:
+  port: 8080
+  servlet:
+    context-path: /product
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:28761/eureka
+spring:
+  application:
+    name: product-server
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1/hui_base_springcloud?characterEncoding=utf-8&useSSL=false
+logging:
+  level:
+    com.hui.base.springcloud.*.mapper: DEBUG
+    com.hui.base.springcloud.*.api: DEBUG
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#PRODUCT-SERVER:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: 配置负载均衡（全类名）
+#设置熔断器默认配置项和单独设置某个方法的超时时间
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+    hystrixTestX:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2000
+fegin:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 160000000
+        readTimeout: 1600000
+#熔断监控面板前面有/application/XX,需要去掉 /application
+management:
+  context-path: /product

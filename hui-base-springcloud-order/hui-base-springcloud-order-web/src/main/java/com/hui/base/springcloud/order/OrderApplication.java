@@ -1,5 +1,6 @@
 package com.hui.base.springcloud.order;
 
+import com.codingapi.txlcn.tc.config.EnableDistributedTransaction;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,6 +24,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableCircuitBreaker
 @MapperScan("com.hui.base.springcloud.*.mapper")
 @EnableHystrixDashboard
+@EnableFeignClients("com.hui.base.springcloud")
+@EnableDistributedTransaction
 public class OrderApplication {
     public static void main(String[] args) {
         SpringApplication.run(OrderApplication.class, args);

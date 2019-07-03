@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * <b><code>ClientController</code></b>
@@ -123,18 +124,33 @@ public class ClientController {
     public ResultVO addProduct(@RequestBody Order order) {
         orderService.add(order);
         ProductDTO productDTO = new ProductDTO();
+        double ceil = Math.ceil(Math.random() * 100);
+        String productId = String.valueOf(ceil);
+        productDTO.setProductId(productId);
         productDTO.setProductName("test");
         productFeignApi.add(productDTO);
         return ResultMapper.ok();
     }
 
 
+    /**
+     * 用于测试TCC模式
+     * @param order
+     * @param exFlag
+     * @return
+     */
     @PutMapping("/orders/addProduct/tcc")
     public ResultVO addProductByTcc(@RequestBody Order order, String exFlag) {
         orderService.testTCC(order, exFlag);
         return ResultMapper.ok();
     }
 
+    /**
+     * 用于测试TXC模式
+     * @param order
+     * @param exFlag
+     * @return
+     */
     @PutMapping("/orders/addProduct/txc")
     public ResultVO addProductByTxc(@RequestBody Order order, String exFlag) {
         orderService.testTXC(order, exFlag);

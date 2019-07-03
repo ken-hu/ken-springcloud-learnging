@@ -49,26 +49,43 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void testTCC(Order order, String exFlag) {
-        // use the tcc mode to start remote transaction
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setProductName("tccTest");
-        productDTO.setProductId(UUID.randomUUID().toString());
-        productFeignApi.tccAdd(productDTO);
+
 
         // use the local transaction
         orderMapper.insertSelective(order);
+
+        if (exFlag.equals("true")){
+            throw new RuntimeException("test txc exception");
+        }
+
+        // use the tcc mode to start remote transaction
+        ProductDTO productDTO = new ProductDTO();
+        double ceil = Math.ceil(Math.random() * 100);
+        String productId = String.valueOf(ceil);
+        productDTO.setProductName("tccTest");
+        productDTO.setProductId(productId);
+        productFeignApi.tccAdd(productDTO);
+
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void testTXC(Order order, String exFlag) {
-        // use the txc mode to start remote transaction
-        ProductDTO productDTO = new ProductDTO();
-        productDTO.setProductName("txcTest");
-        productDTO.setProductId(UUID.randomUUID().toString());
-        productFeignApi.txcAdd(productDTO);
 
         // use the local transaction
         orderMapper.insertSelective(order);
+
+        if (exFlag.equals("true")){
+            throw new RuntimeException("test txc exception");
+        }
+
+        // use the txc mode to start remote transaction
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setProductName("txcTest");
+        double ceil = Math.ceil(Math.random() * 100);
+        String productId = String.valueOf(ceil);
+
+        productDTO.setProductId(productId);
+        productFeignApi.txcAdd(productDTO);
     }
 }

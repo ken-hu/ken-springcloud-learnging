@@ -66,4 +66,6 @@ fegin:
         readTimeout: 1600000
 #熔断监控面板前面有/application/XX,需要去掉 /application
 management:
-  context-path: /order
+  server:
+    servlet:
+      context-path: /product

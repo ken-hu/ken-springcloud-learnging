@@ -1,5 +1,7 @@
 package com.hui.base.springcloud.product.api;
 
+import com.codingapi.txlcn.tc.support.DTXUserControls;
+import com.codingapi.txlcn.tracing.TracingContext;
 import com.hui.base.springcloud.common.response.ResultVO;
 import dto.ProductDTO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -63,6 +65,7 @@ public interface ProductFeignApi {
 
         @Override
         public ResultVO tccAdd(ProductDTO productDTO) {
+            DTXUserControls.rollbackGroup(TracingContext.tracing().groupId());
             return null;
         }
 

@@ -84,3 +84,6 @@ management:
 # just a val test
 env:
   dev
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070

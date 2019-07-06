@@ -95,17 +95,6 @@
             <version>${swagger2.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.codingapi.txlcn</groupId>
-            <artifactId>txlcn-tc</artifactId>
-            <version>${txlcn.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.codingapi.txlcn</groupId>
-            <artifactId>txlcn-txmsg-netty</artifactId>
-            <version>${txlcn.version}</version>
-        </dependency>
 
 
     </dependencies>

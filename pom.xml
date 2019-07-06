@@ -22,7 +22,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>2.1.6.RELEASE</version>
     </parent>
 
     <properties>
@@ -33,16 +33,13 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
 
-        <springcloud.version>Finchley.RELEASE</springcloud.version>
+        <springcloud.version>Greenwich.RELEASE</springcloud.version>
         <mybatis.springboot.version>1.3.0</mybatis.springboot.version>
         <mybatis.generator>1.3.7</mybatis.generator>
-        <mybatis.pagehelper.version>1.2.7</mybatis.pagehelper.version>
+        <mybatis.pagehelper.version>2.0.0</mybatis.pagehelper.version>
         <druid.version>1.1.10</druid.version>
-        <fastjson.version>1.2.39</fastjson.version>
         <swagger2.version>2.9.2</swagger2.version>
         <mysql.version>5.1.44</mysql.version>
-        <logback.version>1.1.11</logback.version>
-
         <txlcn.version>5.0.2.RELEASE</txlcn.version>
     </properties>
 

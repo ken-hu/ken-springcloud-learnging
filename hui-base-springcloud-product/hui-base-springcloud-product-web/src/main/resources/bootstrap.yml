@@ -23,10 +23,6 @@ server:
   port: 8080
   servlet:
     context-path: /product
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:28761/eureka
 spring:
   application:
     name: product-server
@@ -35,6 +31,24 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1/hui_base_springcloud?characterEncoding=utf-8&useSSL=false
+  cloud:
+    consul:
+      hostname: localhost
+      port: 8500
+      discovery:
+        service-name: product-server
+        health-check-path: /product/actuator/health
+        health-check-interval: 10s
+        prefer-ip-address: true
+        enabled: true
+        instance-id: product-server
+      config:
+        enabled: true
+        format: yaml
+        data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data
+  redis:
+    host: 192.168.89.4
+    port: 6379
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG

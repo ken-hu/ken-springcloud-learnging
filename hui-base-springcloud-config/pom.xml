@@ -36,17 +36,17 @@
         <!--配置中心-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-consul-config</artifactId>
         </dependency>
         <!--discovery-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
         </dependency>
-        <!--动态更新配置-->
-        <dependency>
+        <!--当使用spring cloud config作为配置中心的时候，可以使用spring cloud config bus支持动态刷新配置-->
+        <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
-        </dependency>
+            <artifactId>spring-cloud-starter-consul-bus</artifactId>
+        </dependency>-->
     </dependencies>
 </project>

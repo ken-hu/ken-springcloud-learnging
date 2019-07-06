@@ -1,21 +1,4 @@
-spring:
-  application:
-    name: config-server
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/ithuhui/hui-base-springcloud-config-repo
-          username: ithuhui
-          password:
-          basedir: D:\repo-github\hui-base-springcloud\out\basedir
-      fail-fast: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:28761/eureka
-  instance:
-    appname: config-server
-    prefer-ip-address: true
 server:
   port: 29090
+  servlet:
+    context-path:

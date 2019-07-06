@@ -23,10 +23,6 @@ server:
   port: 8081
   servlet:
     context-path: /order
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:28761/eureka
 spring:
   application:
     name: order-server
@@ -35,14 +31,30 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1/hui_base_springcloud?characterEncoding=utf-8&useSSL=false
+  redis:
+    host: 192.168.89.4
+    port: 6379
+  # 注册中心consul配置
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        service-name: order-server
+        health-check-path: /order/actuator/health
+        health-check-interval: 10s
+        prefer-ip-address: true
+        instance-id: order-server
+    config:
+      enabled: true
+      format: yaml
+      data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG
     com.hui.base.springcloud.*.api: DEBUG
 mybatis:
   mapper-locations: classpath:mapper/*.xml
-env:
-  dev
 #设置熔断器默认配置项和单独设置某个方法的超时时间
 hystrix:
   command:
@@ -69,3 +81,6 @@ management:
   server:
     servlet:
       context-path: /product
+# just a val test
+env:
+  dev

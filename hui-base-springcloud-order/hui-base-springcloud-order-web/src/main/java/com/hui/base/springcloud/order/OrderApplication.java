@@ -5,7 +5,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
@@ -20,7 +20,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @since hui-base-springcloud ${PROJECT_VERSION}
  */
 @SpringBootApplication(scanBasePackages = "com.hui.base.springcloud")
-@EnableEurekaClient
+@EnableDiscoveryClient
 @EnableCircuitBreaker
 @MapperScan("com.hui.base.springcloud.*.mapper")
 @EnableHystrixDashboard

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  *
  * @author Hu Weihui
  */
-@FeignClient(name = "PRODUCT-SERVER",path = "/product",fallback = ProductFeignApi.ProductFeignApiFallback.class )//如果产生服务降级就返回NULL
+@FeignClient(name = "product-server",path = "/product",fallback = ProductFeignApi.ProductFeignApiFallback.class )//如果产生服务降级就返回NULL
 public interface ProductFeignApi {
 
     /**

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * <b><code>OrderServiceImpl</code></b>
@@ -50,14 +49,6 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = Exception.class)
     public void testTCC(Order order, String exFlag) {
 
-
-        // use the local transaction
-        orderMapper.insertSelective(order);
-
-        if (exFlag.equals("true")){
-            throw new RuntimeException("test txc exception");
-        }
-
         // use the tcc mode to start remote transaction
         ProductDTO productDTO = new ProductDTO();
         double ceil = Math.ceil(Math.random() * 100);
@@ -65,6 +56,14 @@ public class OrderServiceImpl implements OrderService {
         productDTO.setProductName("tccTest");
         productDTO.setProductId(productId);
         productFeignApi.tccAdd(productDTO);
+
+
+        // use the local transaction
+        orderMapper.insertSelective(order);
+
+        if (exFlag.equals("true")){
+            throw new RuntimeException("test txc exception");
+        }
 
     }
 
@@ -75,10 +74,6 @@ public class OrderServiceImpl implements OrderService {
         // use the local transaction
         orderMapper.insertSelective(order);
 
-        if (exFlag.equals("true")){
-            throw new RuntimeException("test txc exception");
-        }
-
         // use the txc mode to start remote transaction
         ProductDTO productDTO = new ProductDTO();
         productDTO.setProductName("txcTest");
@@ -87,5 +82,9 @@ public class OrderServiceImpl implements OrderService {
 
         productDTO.setProductId(productId);
         productFeignApi.txcAdd(productDTO);
+
+        if (exFlag.equals("true")){
+            throw new RuntimeException("test txc exception");
+        }
     }
 }

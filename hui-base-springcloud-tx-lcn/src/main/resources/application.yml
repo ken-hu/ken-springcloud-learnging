@@ -1,23 +1,26 @@
+server:
+  port: 28771
 spring:
   application:
     name: tx-lcn-server
-#  datasource:
-#    url: jdbc:mysql://127.0.0.1:3306/txlcn-demo?characterEncoding=UTF-8&serverTimezone=UTC
-#    username: root
-#    password: 123456
-#    driver-class-name: com.mysql.jdbc.Driver
-#  jpa:
-#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-#    hibernate:
-#      ddl-auto: update
   redis:
     host: 192.168.89.4
     port: 6379
-server:
-  port: 28771
-eureka:
-  instance:
-    hostname: tx-lcn-server
-  client:
-    service-url:
-      defaultZone: http://localhost:28761/eureka
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1/tx-manager?characterEncoding=utf-8&useSSL=false
+  cloud:
+    host: 127.0.0.1
+    port: 8500
+    consul:
+      discovery:
+        service-name: tx-lcn-server
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+        prefer-ip-address: true
+      config:
+        enabled: true
+        format: yaml
+        data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data

@@ -1,5 +1,6 @@
 # hui-base-springcloud
-微服务项目骨架搭建 
+微服务项目骨架 SpringCloud(Finchley.RELEASE)  
+集成了zuul + stream + rabbitmq + config-server + tx-lcn + eureka 
 
 ## 介绍
 SpringCloud版本是Finchley.RELEASE  
@@ -7,9 +8,10 @@ SpringCloud版本是Finchley.RELEASE
 1. 【hui-base-springcloud-api-gateway】网关（zuul）
 2. 【ui-base-springcloud-common】通用包
 3. 【hui-base-springcloud-config】配置中心
-4. 【hui-base-springcloud-eureka】注册中心(eureka)
-5. 【hui-base-springcloud-order】微服务demo（order服务）
-6. 【hui-base-springcloud-product】微服务demo（product服务）
+4. 【hui-base-springcloud-eureka】服务发现(eureka)
+5. 【hui-base-springcloud-order】微服务demo（order-server）
+6. 【hui-base-springcloud-product】微服务demo（product-server）
+7. 【hui-base-springcloud-tx-lcn】分布式事务管理器(tx-lcn-server)
 
 ## 项目结构
 ├─hui-base-springcloud  
@@ -21,20 +23,32 @@ SpringCloud版本是Finchley.RELEASE
   │  ├─hui-base-springcloud-order-model  
   │  ├─hui-base-springcloud-order-rest  
   │  └─hui-base-springcloud-order-service  
-  └─hui-base-springcloud-product  
-     ├─hui-base-springcloud-product-model  
-     ├─hui-base-springcloud-product-rest  
-     └─hui-base-springcloud-product-service  
+  ├─hui-base-springcloud-product  
+  |  ├─hui-base-springcloud-product-model  
+  |  ├─hui-base-springcloud-product-rest  
+  |  └─hui-base-springcloud-product-service  
+  └─hui-base-springcloud-tx-lcn 
 
 
 ## 软件架构
 软件架构说明
+1. 该项目是基于springcloud的微服务项目骨架
+2. 除了tx-lcn外基本都采用了spring的框架，所有的package都可以从maven仓库下载
+3. springcloud版本为Finchley.RELEASE
+4. 服务发现采用了Eureka
+5. 配置中心采用了springcloud-starter-config
+6. 网关采用springcloiud-zuul
+7. 分布式事务处理增加tx-lcn（同步分布式事务解决方案）
 
 
-## 安装教程
-1. xxxx
-2. xxxx
-3. xxxx
+## 使用教程
+0. 起RabbitMQ,Redis
+1. 启用EurekaApplication
+2. 启用ConfigApplication
+3. 启用ZuulApplication
+4. 启用LcnServerApplication
+5. 启用OrderApplication
+6. 启用ProductApplication
 
 ## 使用说明
 使用github的config仓库作为配置中心  

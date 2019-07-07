@@ -13,6 +13,9 @@
 # Log file
 *.log
 
+## TX-LCN
+.txlcn
+
 ##
 # Intellij idea
 .idea

@@ -15,7 +15,7 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 import java.util.Properties;
 
 /**
- * Description: AOP方式声明分布式事务示例。service b, service c 用的注解方式，注意区分，非必须如此配置，可以注解，也可以声明式
+ * Description: AOP方式声明分布式事务示例。product-server 用的注解方式，注意区分，非必须如此配置，可以注解，也可以声明式
  * Date: 19-1-13 下午2:46
  *
  * @author ujued

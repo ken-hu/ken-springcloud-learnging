@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * <b><code>LcnServerApplication</code></b>
  * <p/>
- * Description: SpringCloud LCN服务（分布式事务）
+ * Description: SpringCloud LCN-manager服务（分布式事务） 默认是8070端口
  * <p/>
  * <b>Creation Time:</b> 2019/4/1 21:15.
  *

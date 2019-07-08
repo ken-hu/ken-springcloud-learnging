@@ -15,9 +15,6 @@
 
 ## Branches
 
-- `master`  融合最新分支  
-- `springcloud-finchley` Finchley.RELEASE
-- `springcloud-greenwich` Greenwich.RELEASE
 
 |         branche         | springcloud-version |                       note                        |
 | :---------------------: | :-----------------: | :-----------------------------------------------: |

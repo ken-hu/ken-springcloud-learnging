@@ -1,3 +1,15 @@
+server:
+  port: 29000
+  servlet:
+    context-path: /discovery-client
 spring:
   application:
-    name: consul-test
+    name: discovery-client
+  cloud:
+    ## consul 配置
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        service-name: ${spring.application.name}
+        instance-id: ${spring.application.name}

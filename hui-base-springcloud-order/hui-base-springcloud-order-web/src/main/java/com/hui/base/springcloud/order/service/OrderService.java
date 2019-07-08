@@ -23,7 +23,17 @@ public interface OrderService {
 
     Order add(Order order);
 
+    /**
+     * 测试TX-LCN的TCC模式
+     * @param order
+     * @param exFlag
+     */
     void testTCC(Order order, String exFlag);
 
+    /**
+     * 测试TX-LCN的TXC模式
+     * @param order
+     * @param exFlag
+     */
     void testTXC(Order order, String exFlag);
 }

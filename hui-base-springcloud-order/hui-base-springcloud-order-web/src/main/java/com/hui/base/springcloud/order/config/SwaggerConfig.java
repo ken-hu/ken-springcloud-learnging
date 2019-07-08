@@ -30,7 +30,7 @@ public class SwaggerConfig {
         StopWatch watch = new StopWatch();
         watch.start();
         Docket swaggerSpringMvcPlugin = new Docket(DocumentationType.SWAGGER_2)
-                .groupName("order-server")
+                .groupName("order-service")
                 .apiInfo(apiInfo())
                 .useDefaultResponseMessages(false)
                 .select().apis(RequestHandlerSelectors.basePackage("com.hui.base.springcloud"))
@@ -41,7 +41,7 @@ public class SwaggerConfig {
     }
 
     private ApiInfo apiInfo() {
-        String title = "order-server API文档";
+        String title = "order-service API文档";
         String description = " RESTFUL API";
         return new ApiInfoBuilder()
                 .title(title)

@@ -1,24 +1,4 @@
-# 使用CONFIG-SERVER 版本
-#server:
-#  port: 8081
-#spring:
-#  cloud:
-#    config:
-#      profile: dev
-#      discovery:
-#        enabled: true
-#        service-id: CONFIG-SERVER
-#      label: master
-#  application:
-#    name: product-server
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:28761/eureka
-
-
-# ------
-#不使用CONFIG-SERVER 版本
+## server基础配置
 server:
   port: 8080
   servlet:
@@ -26,12 +6,17 @@ server:
 spring:
   application:
     name: product-server
+## 数据源配置
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
     url: jdbc:mysql://127.0.0.1/hui_base_springcloud?characterEncoding=utf-8&useSSL=false
+  redis:
+    host: 192.168.89.4
+    port: 6379
   cloud:
+## consl服务发现配置
     consul:
       hostname: localhost
       port: 8500
@@ -42,13 +27,6 @@ spring:
         prefer-ip-address: true
         enabled: true
         instance-id: product-server
-      config:
-        enabled: true
-        format: yaml
-        data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data
-  redis:
-    host: 192.168.89.4
-    port: 6379
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG

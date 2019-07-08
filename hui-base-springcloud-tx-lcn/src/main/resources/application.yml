@@ -20,7 +20,3 @@ spring:
         health-check-path: /actuator/health
         health-check-interval: 10s
         prefer-ip-address: true
-      config:
-        enabled: true
-        format: yaml
-        data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data

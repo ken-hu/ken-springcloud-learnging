@@ -42,4 +42,3 @@ hs_err_pid*
 
 /out/**
 /out/
-/hui-base-springcloud-config/src/main/resources/application.yml

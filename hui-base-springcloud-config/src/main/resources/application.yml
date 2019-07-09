@@ -1,4 +1,0 @@
-server:
-  port: 29090
-  servlet:
-    context-path:

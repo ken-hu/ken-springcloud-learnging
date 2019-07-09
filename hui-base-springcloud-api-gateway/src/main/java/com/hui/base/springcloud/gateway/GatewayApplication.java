@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * <b><code>ZuulApplication</code></b>
  * <p/>
- * Description: SpringCloud Finchley 版本 + Zuul 网关中心
+ * Description: SpringCloud Greenwich + gateway  网关中心
  * <p/>
  * <b>Creation Time:</b> 2018/11/26 0:06.
  *

@@ -25,6 +25,7 @@
             <version>${project.version}</version>
         </dependency>
 
+        <!--consul-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-consul-discovery</artifactId>
@@ -35,11 +36,14 @@
             <artifactId>spring-cloud-starter-consul-config</artifactId>
         </dependency>
 
+        <!--hystrix 熔断-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
+
+        <!--hystrix dashbord-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>

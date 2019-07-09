@@ -1,31 +1,12 @@
-# 使用CONFIG-SERVER 版本
-#server:
-#  port: 8080
-##  servlet:
-##    context-path: /order
-#spring:
-#  cloud:
-#    config:
-#      profile: dev
-#      discovery:
-#        enabled: true
-#        service-id: CONFIG-SERVER
-#      label: master
-#  application:
-#    name: order-server
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://localhost:28761/eureka
-# --------------
-#不使用CONFIG-SERVER 版本
+##server基础配置
 server:
   port: 8081
   servlet:
-    context-path: /order
+    context-path: /order-service
 spring:
   application:
-    name: order-server
+    name: order-service
+## 数据源
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
@@ -34,21 +15,17 @@ spring:
   redis:
     host: 192.168.89.4
     port: 6379
-  # 注册中心consul配置
+  ## consul服务发现配置
   cloud:
     consul:
       host: localhost
       port: 8500
       discovery:
-        service-name: order-server
-        health-check-path: /order/actuator/health
+        service-name: ${spring.application.name}
+        health-check-path: ${server.servlet.context-path}/actuator/health
         health-check-interval: 10s
         prefer-ip-address: true
-        instance-id: order-server
-    config:
-      enabled: true
-      format: yaml
-      data-key: data #表示consul上面的KEY值(或者说文件的名字) 默认是data
+        instance-id: ${spring.application.name}
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG
@@ -81,9 +58,7 @@ management:
   server:
     servlet:
       context-path: /product
-# just a val test
-env:
-  dev
+## tx-lcn-manager 配置
 tx-lcn:
   client:
     manager-address: 127.0.0.1:8070

@@ -1,26 +1,56 @@
 server:
   port: 29000
-  servlet:
-    context-path: /gateway
 spring:
   application:
-    name: gateway-server
+    name: gateway-service
   cloud:
+## consul 配置
     consul:
       host: 127.0.0.1
       port: 8500
       discovery:
-        service-name: gateway-server
-        health-check-path: /actuator/health
-        health-check-interval: 10s
+        service-name: ${spring.application.name}
+        # 启用服务发现
+        enabled: true
+        # 启用服务注册
+        register: true
+        # 服务停止时取消注册
+        deregister: true
+        # 表示注册时使用IP而不是hostname
         prefer-ip-address: true
+        # 执行监控检查的频率
+        health-check-interval: 30s
+        # 设置健康检查失败多长时间后，取消注册
+        health-check-critical-timeout: 30s
+        # 健康检查的路径
+        health-check-path: /actuator/info
+        # 服务注册标识，格式为：应用名称+服务器IP+端口
+        instance-id: ${spring.application.name}
+    ## 网关配置
     gateway:
       routes:
-        - id: order
-          uri: lb://order-server
+        # order服务
+        - id: order-service
+          uri: lb://order-service
           predicates:
-          - Path=/order/**
-          # http://localhost:6601/order/order/2, 必须加上StripPrefix=1，否则访问服务时会带上userapi
-          #而不是我们期望的去掉userapi，只保留**部分
+            - Path=/order-service/**
+            - PrefixPath=/order-service
           filters:
             - StripPrefix=1
+            - PrefixPath=/order-service
+        # product服务
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/product-service/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/product-service
+        # config-service demo测试
+        - id: config-service-client
+          uri: lb://config-service-client
+          predicates:
+            - Path=/config-service-client/**
+          filters:
+            - StripPrefix=1
+            - PrefixPath=/config-service-client

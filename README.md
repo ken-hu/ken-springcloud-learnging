@@ -4,6 +4,11 @@
 
 微服务项目骨架，集成各种组件。该项目为了快速开发和备忘创建。
 
+## LOGS 
+2019-8-7 
+1. SpringCloud-Greenwich 分支 新增 gateway 聚合swaggerAPI文档
+2. SpringCloud-Greenwich 分支 新增 SpringbootAdmin监控服务
+
 ## 开发环境
 
 - JDK1.8

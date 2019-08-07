@@ -1,0 +1,17 @@
+##server基础配置
+server:
+  port: 8089
+  servlet:
+    context-path: /monitor-service
+  ## consul服务发现配置
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
+#      discovery:
+#        service-name: ${spring.application.name}
+#        health-check-path: ${server.servlet.context-path}/actuator/health
+#        health-check-interval: 10s
+#        prefer-ip-address: true
+#        instance-id: ${spring.application.name}
+

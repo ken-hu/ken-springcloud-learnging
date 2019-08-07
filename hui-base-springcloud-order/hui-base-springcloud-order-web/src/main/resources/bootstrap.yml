@@ -55,9 +55,16 @@ fegin:
         readTimeout: 1600000
 #熔断监控面板前面有/application/XX,需要去掉 /application
 management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
   server:
     servlet:
-      context-path: /product
+      context-path: /order-service
 ## tx-lcn-manager 配置
 tx-lcn:
   client:

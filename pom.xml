@@ -16,6 +16,7 @@
         <module>hui-base-springcloud-order</module>
         <module>hui-base-springcloud-product</module>
         <module>hui-base-springcloud-tx-lcn</module>
+        <module>hui-base-springcloud-monitor</module>
     </modules>
 
     <!--SpringBoot Parent-->
@@ -41,6 +42,7 @@
         <swagger2.version>2.9.2</swagger2.version>
         <mysql.version>5.1.44</mysql.version>
         <txlcn.version>5.0.2.RELEASE</txlcn.version>
+        <spring-boot-admin>2.1.6</spring-boot-admin>
     </properties>
 
     <dependencyManagement>

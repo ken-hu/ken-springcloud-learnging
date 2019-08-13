@@ -26,6 +26,16 @@ spring:
         health-check-interval: 10s
         prefer-ip-address: true
         instance-id: ${spring.application.name}
+  ## sleuth web
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0
+  ## zipkin
+  zipkin:
+    base-url: http://localhost:9411/
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG

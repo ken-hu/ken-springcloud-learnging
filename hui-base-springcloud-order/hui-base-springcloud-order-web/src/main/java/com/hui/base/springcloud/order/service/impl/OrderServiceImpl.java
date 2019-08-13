@@ -45,6 +45,11 @@ public class OrderServiceImpl implements OrderService {
         return order;
     }
 
+    /**
+     * 测试LCN-TCC
+     * @param order
+     * @param exFlag
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void testTCC(Order order, String exFlag) {
@@ -67,6 +72,11 @@ public class OrderServiceImpl implements OrderService {
 
     }
 
+    /**
+     * 测试LCN-TXC
+     * @param order
+     * @param exFlag
+     */
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void testTXC(Order order, String exFlag) {

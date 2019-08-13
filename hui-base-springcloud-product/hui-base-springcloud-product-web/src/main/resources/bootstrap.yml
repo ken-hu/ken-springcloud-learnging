@@ -27,6 +27,16 @@ spring:
         prefer-ip-address: true
         enabled: true
         instance-id: product-server
+  ## sleuth web
+  sleuth:
+    web:
+      client:
+        enabled: true
+    sampler:
+      probability: 1.0
+  ## zipkin
+  zipkin:
+    base-url: http://localhost:9411/
 logging:
   level:
     com.hui.base.springcloud.*.mapper: DEBUG

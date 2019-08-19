@@ -1,5 +1,3 @@
-[TOC]
-
 # hui-base-springcloud
 
 微服务项目骨架，集成各种组件。该项目为了快速开发和备忘创建。
@@ -8,6 +6,17 @@
 2019-8-7 
 1. SpringCloud-Greenwich 分支 新增 gateway 聚合swaggerAPI文档
 2. SpringCloud-Greenwich 分支 新增 SpringbootAdmin监控服务
+2019-8-15
+1. SpringCloud-Greenwich 分支 新增ZIPKIN + SLEUTH 
+
+## BLOG
+1. [springcloud-fenchley-greenwich-脚手架搭建（一） ](https://ithuhui.com/2019/03/01/springcloud-fenchley-greenwich-start/)
+2. [spirngcloud-register-server-注册中心（二）](https://ithuhui.com/2019/03/02/springcloud-register-server/)
+3. [springcloud-configServer-配置中心（三）](https://ithuhui.com/2019/03/03/springcloud-config-server/)
+4. [springcloud-apiGateway-网关中心（四）](https://ithuhui.com/2019/03/04/springcloud-api-gateway/)
+5. [springcloud-feign-服务调用-（五）](https://ithuhui.com/2019/03/05/springcloud-feign/)
+6. [springcloud-transaction-tx-lcn（六）](https://ithuhui.com/2019/03/06/springcloud-transaction-tx-lcn/)
+
 
 ## 开发环境
 
